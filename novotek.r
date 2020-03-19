@@ -2,7 +2,7 @@ library(borsdata)
 library(stringr)
 library(dplyr)
 
-key<-"<api>"
+# Api key
 
 aktier<-fetch_instruments(key=key)
 
@@ -42,8 +42,8 @@ ggplot(data =  skr, aes(x=year, y=revenue))+
            fill = "dark green",   
            colour = "black")+ theme_bw()+ labs(
              x = "År",
-             y = "Omsättning",
-             title = "Novotek omsättning MKR mellan 2009 och 2019",
+             y = "Omsättning\n MKR",
+             title = "Novotek omsättning och ebitmarginal mellan 2009 och 2019",
              caption = "Källa: Börsdata"
            )+ 
   theme(
@@ -65,11 +65,12 @@ ggplot(data =  skr, aes(x=year, y=revenue))+
   scale_x_continuous(breaks=seq(2009,2019,1))+
   scale_y_continuous(breaks=seq(0,350,50), limits = c(0,350))+ 
   geom_text(data = plot_labels,
-            aes(x = x[6], y = y[6], label = label), size=5, parse = TRUE)+
+            aes(x = x[6], y = 300, label = label), size=5, parse = TRUE)+
   annotate("segment", x = plot_labels$x[2], xend = plot_labels$x[10],
            y = year$revenues[2]*1.1,
            yend = year$revenues[10]*1.25,
-           arrow = arrow(length = unit(1, "lines")), colour = "grey50")
+           arrow = arrow(length = unit(1, "lines")), colour = "grey50")+
+  geom_text(aes(label=round(skr$ebit/skr$revenue, digits=3)*100), vjust=1.5, color="white", size=3.5)
 
 
 #### DCF #### 
