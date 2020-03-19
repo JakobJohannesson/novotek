@@ -1,0 +1,2 @@
+# novotek
+Bolagsanalys av Novotek
