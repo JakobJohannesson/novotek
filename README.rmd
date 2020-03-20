@@ -1,0 +1,32 @@
+---
+title: "Novotek"
+author: John Doe
+date: March 22, 2005
+output:
+  md_document:
+  variant: markdown_github
+---
+  
+# Novotek
+Novotek bolagsanalys
+
+
+## Hämtar data
+```{r eval=FALSE}
+year<-fetch_year(164,key = key)
+r12<-fetch_r12(164,key = key)
+kvartal<-fetch_quarter(164,key = key)
+
+
+```
+
+
+
+
+```{r echo=FALSE, message=FALSE}
+library(magick)
+image_read(path = "media/figur.png")
+```
+
+
+
